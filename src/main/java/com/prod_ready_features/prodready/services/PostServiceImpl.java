@@ -16,6 +16,7 @@ public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
     private final ModelMapper modelMapper;
+
     @Override
     public List<PostDTO> getAllPosts(){
         return postRepository.findAll().
