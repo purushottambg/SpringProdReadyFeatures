@@ -19,8 +19,8 @@ public class PostController {
         return postService.getAllPosts();
     }
 
-    @GetMapping(path = "/{postId}")
-    public PostDTO getPostById(@RequestParam Long postId){
+    @GetMapping("/{postId}")
+    public PostDTO getPostById(@PathVariable Long postId){
         return postService.findById(postId);
     }
 
