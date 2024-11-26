@@ -8,4 +8,5 @@ import java.util.List;
 public interface PostService {
     List <PostDTO> getAllPosts();
     PostDTO createNewPost(PostDTO inputPost);
+    PostDTO findById(Long postId);
 }

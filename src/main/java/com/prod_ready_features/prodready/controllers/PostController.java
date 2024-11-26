@@ -3,10 +3,7 @@ package com.prod_ready_features.prodready.controllers;
 import com.prod_ready_features.prodready.dto.PostDTO;
 import com.prod_ready_features.prodready.services.PostService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -16,8 +13,20 @@ import java.util.List;
 public class PostController {
 
     private final PostService postService;
+
     @GetMapping
     public List<PostDTO> getAllPosts(){
         return postService.getAllPosts();
     }
+
+    @GetMapping(path = "/{postId}")
+    public PostDTO getPostById(@RequestParam Long postId){
+        return postService.findById(postId);
+    }
+
+    @PostMapping
+    public PostDTO createNewPost(@RequestBody PostDTO postDTO){
+        return postService.createNewPost(postDTO);
+    }
+
 }
