@@ -39,4 +39,13 @@ public class PostServiceImpl implements PostService {
                 .orElseThrow(()-> new ResourceNotFoundException("We did not find the postId "+postId));
         return modelMapper.map(postEntity, PostDTO.class);
     }
+
+    @Override
+    public PostDTO updatePostById (Long postId, PostDTO inputPost) {
+        PostEntity olderEntity = postRepository.findById(postId).orElseThrow(()-> new ResourceNotFoundException("We did not find the postId "+postId));
+        inputPost.setPostId(postId);
+        modelMapper.map(inputPost, olderEntity);
+        PostEntity savedPostEntity =postRepository.save(olderEntity);
+        return modelMapper.map(olderEntity, PostDTO.class);
+    }
 }
