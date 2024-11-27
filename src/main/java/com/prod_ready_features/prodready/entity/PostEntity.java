@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "posts")
@@ -12,7 +15,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class PostEntity {
+public class PostEntity extends AuditableEntity{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -21,6 +24,5 @@ public class PostEntity {
     private String title;
 
     private String description;
-
 
 }
